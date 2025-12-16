@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>About Us — Appobang</title>
+  <meta name="description" content="Appobang is a software and automation studio building custom digital systems that enable scale, efficiency, and control."/>
+  <meta name="theme-color" content="#000000"/>
+
+  <style>
+    @font-face{
+      font-family:"Oduda";
+      src:url("/fonts/Oduda-Bold-Demo.otf") format("opentype");
+      font-weight:400;
+      font-style:normal;
+      font-display:swap;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#fff; --fg:#0b0b0b; --muted:#6b7280; --line:#e5e7eb;
+      --max:1120px; --r:22px; --shadow:0 18px 60px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:var(--bg); color:var(--fg);
+      font-family:"Oduda","Nunito",ui-rounded,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:inherit}
+    .container{max-width:var(--max); margin:0 auto; padding:18px}
+    header{
+      position:sticky; top:0; z-index:20;
+      background:rgba(255,255,255,.88); backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .head{display:flex; align-items:center; justify-content:space-between; gap:12px}
+    .brand{display:flex; align-items:center; gap:12px; text-decoration:none}
+    .brand img{height:40px; width:auto; display:block}
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:12px 16px; border-radius:999px;
+      background:var(--fg); color:var(--bg);
+      text-decoration:none; font-weight:900; border:2px solid var(--fg);
+      transition:transform .08s ease, background .2s ease, color .2s ease;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn:hover{background:transparent; color:var(--fg)}
+    .btn.alt{background:transparent; color:var(--fg)}
+    .btn.alt:hover{background:var(--fg); color:var(--bg)}
+
+    /* Hero */
+    .hero{
+      position:relative; padding:34px 0 10px; overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:-40px;
+      background-image:url("/assets/panda-logo.png");
+      background-repeat:no-repeat;
+      background-position: 110% 10%;
+      background-size: 560px auto;
+      opacity:.06; pointer-events:none;
+      filter: grayscale(100%);
+    }
+    .heroCard{
+      position:relative;
+      border:1px solid var(--line);
+      border-radius:calc(var(--r) + 8px);
+      background:#fff;
+      box-shadow:var(--shadow);
+      padding:22px;
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:16px;
+      align-items:center;
+    }
+    h1{margin:0; font-size:clamp(2.1rem,4vw,3.2rem); line-height:1.05; font-weight:900}
+    .lead{margin:10px 0 0; color:var(--muted); font-weight:800; line-height:1.65; max-width:65ch}
+    .pillRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .pill{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:10px 12px;
+      font-weight:900;
+      background:#fff;
+    }
+
+    .grid2{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
+    .grid3{display:grid; grid-template-columns: repeat(3,1fr); gap:14px}
+    .block{padding:26px 0}
+    .sectionTitle{display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap; margin:0 0 14px}
+    .sectionTitle h2{margin:0; font-size:1.6rem; font-weight:900}
+    .sectionTitle p{margin:0; color:var(--muted); font-weight:800}
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--r);
+      background:#fff;
+      box-shadow:0 12px 40px rgba(0,0,0,.05);
+      padding:16px;
+    }
+    .card h3{margin:0 0 8px; font-weight:900; font-size:1.05rem}
+    .card p{margin:0; color:var(--muted); font-weight:800; line-height:1.6}
+
+    .counterRow{display:grid; grid-template-columns: repeat(3,1fr); gap:12px}
+    .counter{
+      border:1px solid var(--line);
+      border-radius:var(--r);
+      padding:14px;
+      background:#fff;
+      text-align:left;
+    }
+    .counter .big{font-size:1.6rem; font-weight:900; letter-spacing:.2px}
+    .counter .small{color:var(--muted); font-weight:800; margin-top:6px}
+
+    .steps{display:grid; grid-template-columns: repeat(5, 1fr); gap:10px}
+    .step{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      text-align:center;
+      font-weight:900;
+      background:#fff;
+    }
+    .step span{display:block; color:var(--muted); font-weight:800; margin-top:6px; font-size:.9rem}
+
+    /* Trusted by */
+    .logoStrip{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .logoChip{
+      border:1px solid var(--line);
+      border-radius:99px;
+      padding:20px 24px;
+      background:#fff;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+    }
+    .logoChip img{height:290px; width:auto; display:block}
+
+    footer{
+      border-top:1px solid var(--line);
+      margin-top:26px;
+      background:#fff;
+    }
+    .foot{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; flex-wrap:wrap; padding:18px 0;
+    }
+    .tiny{color:var(--muted); font-weight:800}
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .heroCard{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr}
+      .grid2{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr}
+      .counterRow{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container head">
+      <a class="brand" href="/" aria-label="appobang Home">
+        <img src="/assets/panda-at-g.png" alt="appobang logo" class="brand-img" />
+      </a>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
+        <a class="btn alt" href="/">Home</a>
+        <a class="btn" href="mailto:team@appobang.com?subject=Project%20Enquiry%20-%20appobang">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="heroCard">
+        <div>
+          <h1>Engineering efficiency. Building growth.</h1>
+          <p class="lead">
+            We build custom web, mobile, and automation solutions that turn complex operational requirements into reliable digital systems.
+          </p>
+          <div class="pillRow" aria-label="Narrative arc">
+            <div class="pill">Identity</div>
+            <div class="pill">Empathy</div>
+            <div class="pill">Authority</div>
+          </div>
+        </div>
+        <a class="btn" href="mailto:team@appobang.com?subject=Discovery%20Call%20-%20Appobang">Book a discovery call</a>
+      </div>
+    </section>
+
+    <!-- WHY / TRUST -->
+    <section class="block">
+      <div class="sectionTitle">
+        <h2>Why Appobang</h2>
+        <p>Built to reduce outsourcing risk.</p>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <h3>Technology should be an accelerator</h3>
+          <p>
+            We build tools that match the operational DNA of your business, reduce manual effort, and create the foundation to scale with confidence.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Designed for real operations, not demos</h3>
+          <p>
+            We clarify constraints and edge cases early, then engineer deterministic workflows that remain stable under real-world usage.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROOF / COUNTERS -->
+    <section class="block">
+      <div class="sectionTitle">
+        <h2>Proof of delivery</h2>
+        <p>Outcome-focused credibility signals.</p>
+      </div>
+      <div class="counterRow">
+        <div class="counter">
+          <div class="big">25+</div>
+          <div class="small">GUI-based Python automations shipped for business users</div>
+        </div>
+        <div class="counter">
+          <div class="big">Multi-vertical</div>
+          <div class="small">EdTech, Retail Inventory, Fitness SaaS, Enterprise Automation</div>
+        </div>
+        <div class="counter">
+          <div class="big">Custom-first</div>
+          <div class="small">Fit-for-purpose systems aligned to business constraints</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section class="block">
+      <div class="sectionTitle">
+        <h2>Capabilities</h2>
+        <p>Credibility through scope, not buzzwords.</p>
+      </div>
+      <div class="grid3">
+        <div class="card">
+          <h3>Web platforms</h3>
+          <p>Product-grade sites and web systems for education, commerce, and services.</p>
+        </div>
+        <div class="card">
+          <h3>Mobile applications</h3>
+          <p>Workflow-centric apps for operations teams, shop-floor execution, and field use.</p>
+        </div>
+        <div class="card">
+          <h3>Automation & internal tools</h3>
+          <p>Python automation + GUIs for reporting, quality controls, and process standardization.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPROACH -->
+    <section class="block">
+      <div class="sectionTitle">
+        <h2>Approach</h2>
+        <p>Clarity, discipline, and a clean handover.</p>
+      </div>
+      <div class="steps" aria-label="Delivery methodology">
+        <div class="step">Discovery<span>Business logic & constraints</span></div>
+        <div class="step">Architecture<span>System design & data flows</span></div>
+        <div class="step">Build<span>Iterative delivery</span></div>
+        <div class="step">Harden<span>Testing, edge cases, reliability</span></div>
+        <div class="step">Support<span>Optimization & scaling</span></div>
+      </div>
+    </section>
+
+    <!-- TRUSTED BY / PORTFOLIO -->
+    <section class="block">
+      <div class="sectionTitle">
+        <h2>Portfolio evidence</h2>
+        <p>Verifiable outcomes across real businesses.</p>
+      </div>
+
+      <div class="card" style="margin-bottom:14px;">
+        <h3 style="margin-bottom:10px;">Trusted by</h3>
+        <div class="logoStrip">
+          <div class="logoChip">
+            <img src="/assets/clients/learnamyte.png" alt="Learnamyte" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+            <span style="display:none;">Learnamyte</span>
+          </div>
+          <div class="logoChip">
+            <img src="/assets/clients/happy_pique.png" alt="Happy Pique" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+            <span style="display:none;">Happy Pique</span>
+          </div>
+          <div class="logoChip">
+            <img src="/assets/clients/my_strenght_way.png" alt="My Strength Way" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+            <span style="display:none;">Fitness SaaS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <h3>Learnamyte (EdTech)</h3>
+          <p>
+            Architected a scalable knowledge platform designed for cohort-based learning, with structured information architecture and reliable transaction flows.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Happy Pique (Retail Inventory)</h3>
+          <p>
+            Built a mobile-first inventory system for high-SKU jewellery operations, improving stock accuracy and reducing manual reconciliation across channels.
+          </p>
+        </div>
+        <div class="card">
+          <h3>My Strength Way (Fitness)</h3>
+          <p>
+            Delivered a branded mobile app to consolidate client management, subscriptions, and payments, replacing fragmented tools with one workflow.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="block">
+      <div class="card" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+        <div>
+          <h3 style="margin:0 0 6px;">Let’s scope your system</h3>
+          <p style="margin:0; color:var(--muted); font-weight:800;">
+            Share your workflow constraints; we’ll propose a clear, buildable plan.
+          </p>
+        </div>
+        <a class="btn" href="mailto:team@appobang.com?subject=Project%20Enquiry%20-%20Appobang">Email team@appobang.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div class="tiny">© <span id="y"></span> appobang</div>
+      <div class="tiny">This website is in an early stage — more updates coming soon.</div>
+    </div>
+  </footer>
+
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>

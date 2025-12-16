@@ -15,7 +15,7 @@
   <style>
     @font-face {
       font-family: 'Oduda';
-      src: url('/fonts/Oduda-Bold-Demo.otf') format('truetype');
+      src: url('/fonts/Oduda-Bold-Demo.otf') format('opentype');
       font-weight: 400;
       font-style: normal;
       font-display: swap;
@@ -141,6 +141,7 @@
       <img src="/assets/panda-at-g.png" alt="appobang logo" class="brand-img" />
     </a>
     <nav>
+      <a class="btn alt" href="/about/">About Us</a>
       <a class="btn alt" href="mailto:team@appobang.com">Contact</a>
     </nav>
   </div>
@@ -167,27 +168,17 @@
       </div>
     </main>
 
-    <footer>
-      <div class="container">
-        <div class="tiny">© <span id="y"></span> appobang</div>
-        <div class="links">
-        <a href="mailto:team@appobang.com" class="icon-link">
-          <span>team@appobang.com</span>
-        </a>
+<footer>
+  <div class="container">
+    <div class="tiny">© <span id="y"></span> appobang</div>
 
-        <a href="https://www.linkedin.com/company/appobang" target="_blank" rel="noopener noreferrer" class="icon-link">
-          <span>LinkedIn</span>
-        </a>
-        </div>
+    <div class="links">
+      <a href="mailto:team@appobang.com" class="icon-link"><span>team@appobang.com</span></a>
+      <a href="https://www.linkedin.com/company/appobang" target="_blank" rel="noopener noreferrer" class="icon-link"><span>LinkedIn</span></a>
+    </div>
 
-      </div>
-    </footer>
+    <div class="coming-soon">
+      ⚡ We're just getting started, stay tuned for exciting updates from Appobang.
+    </div>
   </div>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
-
-<div class="coming-soon">
-  ⚡ We're just getting started, stay tuned for exciting updates from Appobang.
-</div>
-
-</body>
-</html>
+</footer>

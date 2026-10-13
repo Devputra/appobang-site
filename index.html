@@ -28,7 +28,7 @@
 
   <style>
     :root{
-      --bg:#fff; --fg:#000; --muted:#9ca3af; --accent:#fff;
+      --bg:#fff; --fg:#000; --muted:#6b7280; --accent:#fff;
       --max:1100px; --radius:28px;
     }
     *{box-sizing:border-box}
@@ -134,6 +134,15 @@
     /* Accessibility skip link */
     .skip{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden}
     .skip:focus{left:16px; top:16px; width:auto; height:auto; background:#fff; color:#000; padding:8px 10px; border-radius:10px}
+
+    /* Small phones: let the header wrap and stop long lines (CIN, email) widening the page */
+    .wrap > *{min-width:0}
+    .company{overflow-wrap:anywhere}
+    @media (max-width: 600px){
+      .brand-img{height:56px}
+      header .container, footer .container{flex-wrap:wrap; justify-content:center}
+      .btn{padding:10px 16px}
+    }
   </style>
 </head>
 <body>
@@ -191,7 +200,9 @@
       appobang is run by <a href="https://dxoctagon.com"><strong>DXOCTAGON (OPC) PRIVATE LIMITED</strong></a><br />
       (One Person Company)<br />
       C/o KCG Innovation Incubation and Entrepreneurship Centre, KCG College of Technology,
-      Karapakkam, Chennai 600097, Tamil Nadu, India · CIN U62090TN2026OPC192930 · GSTIN 33AAMCD6911G1ZQ
+      Karapakkam, Chennai 600097, Tamil Nadu, India · CIN U62090TN2026OPC192930 · GSTIN 33AAMCD6911G1ZQ<br />
+      Phone <a href="tel:+916374532076">+91 63745 32076</a> · Email <a href="mailto:team@appobang.com">team@appobang.com</a> ·
+      Queries and grievances: Devputra (Director)
     </address>
   </div>
   <script>document.getElementById('y').textContent=new Date().getFullYear()</script>

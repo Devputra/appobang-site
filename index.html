@@ -3,213 +3,268 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>appobang</title>
-  <meta name="description" content="appobang builds high-quality mobile and web apps. Ideas to Apps." />
+  <title>appobang — Ideas to apps</title>
+  <meta name="description" content="appobang designs and builds iOS, Android and web apps, and automation tools for real business workflows. Chennai, India." />
   <link rel="canonical" href="https://appobang.com/" />
-  <meta property="og:title" content="appobang — Ideas to Apps" />
-  <meta property="og:description" content="we build iOS, android, and web apps." />
+  <meta property="og:title" content="appobang — Ideas to apps" />
+  <meta property="og:description" content="We design and build iOS, Android and web apps, and automation tools." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://appobang.com/" />
+  <meta name="twitter:card" content="summary" />
   <meta name="theme-color" content="#000000" />
   <link rel="icon" href="favicon.png" />
 
-  <!-- If you have Oduda files, uncomment and point to your TTF/OTF in /fonts -->
+  <link rel="preload" href="/fonts/Oduda-Bold-Demo.otf" as="font" type="font/otf" crossorigin />
   <style>
     @font-face {
       font-family: 'Oduda';
       src: url('/fonts/Oduda-Bold-Demo.otf') format('opentype');
-      font-weight: 400;
+      font-weight: 700;
       font-style: normal;
       font-display: swap;
     }
   </style>
 
-  <!-- Rounded fallback (free) while Oduda loads/is added -->
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <!-- Nunito for body text; Oduda is a display face, used for headings, buttons and labels -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#fff; --fg:#000; --muted:#6b7280; --accent:#fff;
-      --max:1100px; --radius:28px;
+      --bg:#fff; --fg:#000; --muted:#595959; --line:#e5e5e5;
+      --max:1120px; --radius:28px;
+      --display:'Oduda','Nunito',ui-rounded,system-ui,sans-serif;
+      --text:'Nunito',ui-rounded,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0; background:var(--bg); color:var(--fg);
-      font-family:'Oduda','Nunito',ui-rounded,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      font-family:var(--text); font-size:1rem; line-height:1.6;
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
+    h1,h2,h3,.btn,.pill,.tag,.work-name,.num{font-family:var(--display); font-weight:700}
+    :focus-visible{outline:3px solid var(--fg); outline-offset:3px; border-radius:6px}
 
     /* Layout */
     .wrap{min-height:100dvh; display:grid; grid-template-rows:auto 1fr auto}
-    header,main,footer{width:100%; display:flex; justify-content:center}
+    header,main,footer{width:100%; display:flex; flex-direction:column; align-items:center}
     .container{width:100%; max-width:var(--max); padding:20px}
-    header .container, footer .container{display:flex; align-items:center; justify-content:space-between; gap:12px}
+    header .container, .foot{display:flex; align-items:center; justify-content:space-between; gap:12px}
 
     /* Brand */
-    .mark{
-      width:48px;
-      height:48px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:transparent;   /* remove the circle background */
-      border-radius:0;          /* no circular clipping */
-      overflow:visible;          /* let the image show fully */
-    }
+    .brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--fg)}
+    .brand-img{height:100px; width:auto; display:block; transition:transform .25s ease}
+    .brand:hover .brand-img{transform:rotate(-2deg) scale(1.03)}
+    nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
 
-    .mark img{
-      width:48px;               /* or tweak to your logo size */
-      height:auto;
-      object-fit:contain;
-    }
-
-    .brand{display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--fg)}
-    .brand span{font-weight:900; font-size:3rem; letter-spacing:1px}
-    .brand-img {
-    height: 100px;        /* adjust logo height here */
-    width: auto;
-    display: block;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;  /* keeps panda + logo aligned vertically */
-      gap: 12px;            /* spacing between the two */
-    }
-
-    /* CTA button */
+    /* Buttons */
     .btn{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:14px 20px; border-radius:var(--radius); background:var(--fg); color:var(--bg);
-      text-decoration:none; font-weight:800; border:2px solid var(--fg);
-      transition:transform .08s ease, background .2s ease, color .2s ease;
+      display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:44px;
+      padding:12px 20px; border-radius:var(--radius); background:var(--fg); color:var(--bg);
+      text-decoration:none; border:2px solid var(--fg);
+      transition:transform .18s ease, background .18s ease, color .18s ease;
     }
+    .btn:hover{background:transparent; color:var(--fg); transform:translateY(-1px)}
     .btn:active{transform:translateY(1px)}
     .btn.alt{background:transparent; color:var(--fg)}
-    .btn:hover{background:transparent; color:var(--fg)}
+    .btn.alt:hover{background:var(--fg); color:var(--bg)}
+    .btn .arrow{transition:transform .18s ease}
+    .btn:hover .arrow{transform:translateX(3px)}
 
     /* Hero */
-    .hero{display:grid; place-items:center; text-align:center; padding-block:8vh}
-    .hero h1{
-      margin:12px 0 10px; font-size:clamp(2rem, 6vw, 4.2rem); line-height:1.05; font-weight:900;
-      letter-spacing:0.5px;
-    }
+    .hero{text-align:center; padding-block:clamp(48px, 7vw, 96px) clamp(16px, 3vw, 32px)}
+    .hero h1{margin:0 0 20px; font-size:clamp(2.5rem, 5.25vw, 4.25rem); line-height:1.08; letter-spacing:0.5px}
+    .hero h1 .word{display:inline-block}
     .hero p{
-      margin:0 auto 28px; max-width:720px; color:var(--muted);
-      font-size:clamp(1rem, 2.4vw, 1.25rem); line-height:1.55;
+      margin:0 auto 28px; max-width:640px; color:var(--muted);
+      font-size:clamp(1.05rem, 2.2vw, 1.25rem); line-height:1.6;
     }
+    .hero p strong{color:var(--fg)}
+    .cta{display:flex; gap:12px; flex-wrap:wrap; justify-content:center}
 
-    /* Divider card */
+    /* Capability strip */
+    .card{
+      margin:48px auto 0; width:fit-content; max-width:100%;
+      background:#000; border-radius:var(--radius);
+      padding:20px; display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
+    }
+    .pill{
+      border:1px solid #666; color:#fff; border-radius:999px; padding:6px 12px; font-size:.95rem;
+      transition:background .18s ease, color .18s ease, border-color .18s ease;
+    }
+    .pill:hover{background:#fff; color:#000; border-color:#fff}
 
-   .card{
-  margin:40px auto 0; max-width:var(--max);
-  background:#000;                /* light background */
-  border:1px solid #e5e5e5;       /* light grey border */
-  border-radius:var(--radius);
-  padding:20px;
-  display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
-  }
-
-  .pill{
-    border:1px solid #000;          /* black outline */
-    color:#fff;                     /* black text */
-  }
-  .coming-soon {
-    text-align: center;
-    color: var(--muted);
-    font-style: italic;
-    padding: 16px;
-    margin-top: 40px;
-  }
+    /* Sections */
+    .block{padding-block:clamp(32px, 5vw, 56px)}
+    .block h2{margin:0 0 6px; font-size:clamp(1.6rem, 3vw, 2rem); line-height:1.15}
+    .block .sub{margin:0 0 24px; color:var(--muted)}
+    .grid3{display:grid; grid-template-columns:repeat(3, 1fr); gap:16px}
+    .grid2{display:grid; grid-template-columns:repeat(2, 1fr); gap:16px}
+    .tile{
+      border:1px solid var(--line); border-radius:20px; padding:24px; background:#fff;
+      transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+    .tile:hover{border-color:var(--fg); transform:translateY(-3px); box-shadow:0 14px 34px rgba(0,0,0,.08)}
+    .tile h3{margin:0 0 8px; font-size:1.25rem}
+    .tile p{margin:0; color:var(--muted)}
+    .num{display:block; font-size:.9rem; color:var(--muted); margin-bottom:14px}
+    .tag{display:inline-block; font-size:.8rem; border:1px solid var(--fg); border-radius:999px; padding:2px 10px; margin-bottom:12px}
+    .tile .work-name{font-size:1.6rem; margin:0 0 6px; color:var(--fg)}
+    .more{margin-top:24px; text-align:center}
 
     /* Footer */
+    footer{border-top:1px solid var(--line)}
     footer .links{display:flex; gap:16px; flex-wrap:wrap; align-items:center}
     footer a{color:var(--muted); text-decoration:none}
     footer a:hover{color:var(--fg)}
     .tiny{color:var(--muted); font-size:0.9rem}
-    .company{width:100%; max-width:var(--max); padding:0 20px 20px; color:var(--muted); font-size:0.8rem; font-style:normal; line-height:1.7}
-    .company a{color:var(--muted)}
+    .company{width:100%; max-width:var(--max); margin:0; padding:0 20px 12px; color:var(--muted); font-size:0.85rem; font-style:normal; line-height:1.7}
+    .company a{color:var(--muted); text-decoration:underline}
     .company a:hover{color:var(--fg)}
+    .coming-soon{width:100%; max-width:var(--max); margin:0; padding:0 20px 24px; color:var(--muted); font-size:.85rem; font-style:italic}
 
     /* Accessibility skip link */
     .skip{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden}
     .skip:focus{left:16px; top:16px; width:auto; height:auto; background:#fff; color:#000; padding:8px 10px; border-radius:10px}
 
-    /* Small phones: let the header wrap and stop long lines (CIN, email) widening the page */
+    /* Motion: the hero plays once on load and sections reveal once on scroll. The script adds .motion only when
+       motion is allowed, so without JS or with reduced motion everything is simply visible. */
+    @keyframes rise{from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none}}
+    .motion .hero .word{animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
+    .motion .hero .word:nth-child(2){animation-delay:.08s}
+    .motion .hero .word:nth-child(3){animation-delay:.16s}
+    .motion .hero p{animation:rise .5s .25s cubic-bezier(.2,.7,.2,1) both}
+    .motion .hero .cta{animation:rise .5s .35s cubic-bezier(.2,.7,.2,1) both}
+    .motion .reveal{opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1)}
+    .motion .reveal.in{opacity:1; transform:none}
+    @media print{ .motion .reveal{opacity:1; transform:none} }
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{animation:none !important; transition-duration:.01ms !important}
+      .btn:hover,.tile:hover,.brand:hover .brand-img,.btn:hover .arrow{transform:none}
+    }
+
+    /* Small screens: stack the grids, let the header wrap, and stop long lines (CIN, email) widening the page */
     .wrap > *{min-width:0}
     .company{overflow-wrap:anywhere}
+    @media (max-width: 860px){
+      .grid3{grid-template-columns:1fr 1fr}
+    }
     @media (max-width: 600px){
       .brand-img{height:56px}
-      header .container, footer .container{flex-wrap:wrap; justify-content:center}
-      .btn{padding:10px 16px}
+      header .container, .foot{flex-wrap:wrap; justify-content:center}
+      nav{justify-content:center}
+      .grid3,.grid2{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
   <a href="#content" class="skip">Skip to content</a>
   <div class="wrap">
-   <header>
-  <div class="container">
-    <a class="brand" href="/" aria-label="appobang Home">
-      <img src="/assets/panda-at-g.png" alt="appobang logo" class="brand-img" />
-    </a>
-    <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
-      <a class="btn alt" href="/about/">About Us</a>
-      <a class="btn alt" href="mailto:team@appobang.com">Contact</a>
-    </div>
-  </div>
-</header>
+    <header>
+      <div class="container">
+        <a class="brand" href="/" aria-label="appobang Home">
+          <img src="/assets/panda-at-g.png" alt="appobang logo" class="brand-img" width="836" height="304" />
+        </a>
+        <nav aria-label="Primary">
+          <a class="btn alt" href="/about/">About Us</a>
+          <a class="btn" href="mailto:team@appobang.com">Contact</a>
+        </nav>
+      </div>
+    </header>
+
     <main id="content">
       <div class="container hero">
-        <h1>Ideas to apps.</h1>
+        <h1><span class="word">Ideas</span> <span class="word">to</span> <span class="word">apps.</span></h1>
         <p>
-          we design and build reliable <strong>iOS</strong>, <strong>android</strong>, and <strong>web</strong> applications.
-          clean architecture, thoughtful UX, and delivery you can trust.
+          We design and build reliable <strong>iOS</strong>, <strong>Android</strong> and <strong>web</strong> applications.
+          Clean architecture, thoughtful UX, and delivery you can trust.
         </p>
-        <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center">
-          <a class="btn" href="mailto:team@appobang.com?subject=Project%20Enquiry%20-%20appobang">Start a project</a>
+        <div class="cta">
+          <a class="btn" href="mailto:team@appobang.com?subject=Project%20Enquiry%20-%20appobang">Start a project <span class="arrow" aria-hidden="true">→</span></a>
         </div>
 
-        <section class="card" id="work" aria-label="Capabilities">
+        <section class="card reveal" id="work" aria-label="Capabilities">
           <span class="pill">iOS (Swift)</span>
           <span class="pill">Android (Kotlin)</span>
           <span class="pill">Flutter / React Native</span>
-          <span class="pill">Web Apps</span>
-          <span class="pill">Backend & APIs</span>
+          <span class="pill">Web apps</span>
+          <span class="pill">Backend &amp; APIs</span>
           <span class="pill">UI/UX</span>
         </section>
       </div>
+
+      <section class="container block reveal" aria-labelledby="build-h">
+        <h2 id="build-h">What we build</h2>
+        <p class="sub">Software shaped around how your business actually runs.</p>
+        <div class="grid3">
+          <div class="tile">
+            <span class="num">01</span>
+            <h3>Mobile apps</h3>
+            <p>iOS, Android and cross-platform apps for customers, field teams and operations.</p>
+          </div>
+          <div class="tile">
+            <span class="num">02</span>
+            <h3>Web platforms</h3>
+            <p>Sites and web systems for education, commerce and services.</p>
+          </div>
+          <div class="tile">
+            <span class="num">03</span>
+            <h3>Automation tools</h3>
+            <p>OCR, reporting and internal tools that take repetitive work off your team.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="container block reveal" aria-labelledby="selected-h">
+        <h2 id="selected-h">Selected work</h2>
+        <p class="sub">Our own product and client work.</p>
+        <div class="grid2">
+          <div class="tile">
+            <span class="tag">Our product</span>
+            <p class="work-name">Lemyte</p>
+            <p>A GATE exam practice platform with timed mock tests, worked solutions and topic-wise reports.</p>
+          </div>
+          <div class="tile">
+            <span class="tag">Client work</span>
+            <p class="work-name">CAMSPay</p>
+            <p>An OCR tool that finds and crops NACH mandates from mixed scanned bundles, with a strict PASS/FAIL check.</p>
+          </div>
+        </div>
+        <div class="more"><a class="btn alt" href="/about/#portfolio">More about our work <span class="arrow" aria-hidden="true">→</span></a></div>
+      </section>
     </main>
 
     <footer>
-      <div class="container">
+      <div class="container foot">
         <div class="tiny">© <span id="y"></span> appobang</div>
         <div class="links">
-        <a href="mailto:team@appobang.com" class="icon-link">
-          <span>team@appobang.com</span>
-        </a>
-
-        <a href="https://www.linkedin.com/company/appobang" target="_blank" rel="noopener noreferrer" class="icon-link">
-          <span>LinkedIn</span>
-        </a>
+          <a href="mailto:team@appobang.com">team@appobang.com</a>
+          <a href="https://www.linkedin.com/company/appobang" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
-
       </div>
+      <address class="company">
+        appobang is run by <a href="https://dxoctagon.com"><strong>DXOCTAGON (OPC) PRIVATE LIMITED</strong></a><br />
+        (One Person Company)<br />
+        C/o KCG Innovation Incubation and Entrepreneurship Centre, KCG College of Technology,
+        Karapakkam, Chennai 600097, Tamil Nadu, India · CIN U62090TN2026OPC192930 · GSTIN 33AAMCD6911G1ZQ<br />
+        Phone <a href="tel:+916374532076">+91 63745 32076</a> · Email <a href="mailto:team@appobang.com">team@appobang.com</a> ·
+        Queries and grievances: Devputra (Director)
+      </address>
+      <p class="coming-soon">We're just getting started. Stay tuned for updates from appobang.</p>
     </footer>
-    <address class="company" style="margin:0 auto">
-      appobang is run by <a href="https://dxoctagon.com"><strong>DXOCTAGON (OPC) PRIVATE LIMITED</strong></a><br />
-      (One Person Company)<br />
-      C/o KCG Innovation Incubation and Entrepreneurship Centre, KCG College of Technology,
-      Karapakkam, Chennai 600097, Tamil Nadu, India · CIN U62090TN2026OPC192930 · GSTIN 33AAMCD6911G1ZQ<br />
-      Phone <a href="tel:+916374532076">+91 63745 32076</a> · Email <a href="mailto:team@appobang.com">team@appobang.com</a> ·
-      Queries and grievances: Devputra (Director)
-    </address>
   </div>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
-
-<div class="coming-soon">
-  ⚡ We're just getting started, stay tuned for exciting updates from Appobang.
-</div>
-
+  <script>
+    document.getElementById('y').textContent=new Date().getFullYear();
+    (function(){
+      if(matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+      document.documentElement.classList.add('motion');
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      },{threshold:0.12});
+      document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+    })();
+  </script>
 </body>
 </html>

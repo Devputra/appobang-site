@@ -5,32 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>About Us — appobang</title>
   <meta name="description" content="Appobang is a software and automation studio building custom digital systems that enable scale, efficiency, and control."/>
+  <link rel="canonical" href="https://appobang.com/about/" />
+  <meta property="og:title" content="About appobang" />
+  <meta property="og:description" content="Custom web, mobile and automation solutions that turn complex operations into reliable digital systems." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://appobang.com/about/" />
+  <meta name="twitter:card" content="summary" />
   <meta name="theme-color" content="#000000"/>
   <link rel="icon" href="/favicon.png" />
 
+  <link rel="preload" href="/fonts/Oduda-Bold-Demo.otf" as="font" type="font/otf" crossorigin />
   <style>
     @font-face{
       font-family:"Oduda";
       src:url("/fonts/Oduda-Bold-Demo.otf") format("opentype");
-      font-weight:400;
+      font-weight:700;
       font-style:normal;
       font-display:swap;
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#fff; --fg:#0b0b0b; --muted:#6b7280; --line:#e5e7eb;
+      --bg:#fff; --fg:#000; --muted:#595959; --line:#e5e5e5;
       --max:1120px; --r:22px; --shadow:0 18px 60px rgba(0,0,0,.08);
     }
     *{box-sizing:border-box}
     body{
       margin:0; background:var(--bg); color:var(--fg);
-      font-family:"Oduda","Nunito",ui-rounded,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      font-family:"Nunito",ui-rounded,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.6;
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
     a{color:inherit}
+    /* Oduda is a display face: headings, buttons and labels; body text stays in Nunito */
+    h1,h2,h3,.btn,.pill,.step,.counter .big{font-family:"Oduda","Nunito",ui-rounded,system-ui,sans-serif; font-weight:700}
+    :focus-visible{outline:3px solid var(--fg); outline-offset:3px; border-radius:6px}
+    .skip{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden}
+    .skip:focus{left:16px; top:16px; z-index:30; width:auto; height:auto; background:#fff; color:#000; padding:8px 10px; border-radius:10px}
+    html{scroll-padding-top:90px}
     .container{max-width:var(--max); margin:0 auto; padding:18px}
     header{
       position:sticky; top:0; z-index:20;
@@ -39,18 +53,20 @@
     }
     .head{display:flex; align-items:center; justify-content:space-between; gap:12px}
     .brand{display:flex; align-items:center; gap:12px; text-decoration:none}
-    .brand img{height:40px; width:auto; display:block}
+    .brand img{height:40px; width:auto; display:block; transition:transform .25s ease}
+    .brand:hover img{transform:rotate(-2deg) scale(1.03)}
+    nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
     .btn{
       display:inline-flex; align-items:center; gap:10px;
-      padding:12px 16px; border-radius:999px;
+      min-height:44px; padding:12px 16px; border-radius:999px;
       background:var(--fg); color:var(--bg);
-      text-decoration:none; font-weight:900; border:2px solid var(--fg);
-      transition:transform .08s ease, background .2s ease, color .2s ease;
+      text-decoration:none; border:2px solid var(--fg);
+      transition:transform .18s ease, background .18s ease, color .18s ease;
     }
-    .btn:active{transform:translateY(1px)}
-    .btn:hover{background:transparent; color:var(--fg)}
+    .btn:hover{background:transparent; color:var(--fg); transform:translateY(-1px)}
     .btn.alt{background:transparent; color:var(--fg)}
     .btn.alt:hover{background:var(--fg); color:var(--bg)}
+    .btn:active{transform:translateY(1px)}
 
     /* Hero */
     .hero{
@@ -78,33 +94,35 @@
       gap:16px;
       align-items:center;
     }
-    h1{margin:0; font-size:clamp(2.1rem,4vw,3.2rem); line-height:1.05; font-weight:900}
-    .lead{margin:10px 0 0; color:var(--muted); font-weight:800; line-height:1.65; max-width:65ch}
+    h1{margin:0; font-size:clamp(2rem,4vw,3.25rem); line-height:1.12}
+    .lead{margin:12px 0 0; color:var(--muted); font-size:1.05rem; line-height:1.65; max-width:65ch}
     .pillRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
     .pill{
       border:1px solid var(--line);
       border-radius:999px;
-      padding:10px 12px;
-      font-weight:900;
+      padding:8px 14px;
       background:#fff;
+      transition:background .18s ease, color .18s ease, border-color .18s ease;
     }
+    .pill:hover{background:var(--fg); color:var(--bg); border-color:var(--fg)}
 
     .grid2{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
     .grid3{display:grid; grid-template-columns: repeat(3,1fr); gap:14px}
     .block{padding:26px 0}
     .sectionTitle{display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap; margin:0 0 14px}
-    .sectionTitle h2{margin:0; font-size:1.6rem; font-weight:900}
-    .sectionTitle p{margin:0; color:var(--muted); font-weight:800}
+    .sectionTitle h2{margin:0; font-size:clamp(1.5rem,3vw,1.9rem)}
+    .sectionTitle p{margin:0; color:var(--muted)}
 
     .card{
       border:1px solid var(--line);
       border-radius:var(--r);
       background:#fff;
-      box-shadow:0 12px 40px rgba(0,0,0,.05);
-      padding:16px;
+      padding:20px;
+      transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
     }
-    .card h3{margin:0 0 8px; font-weight:900; font-size:1.05rem}
-    .card p{margin:0; color:var(--muted); font-weight:800; line-height:1.6}
+    .card:hover{border-color:var(--fg); transform:translateY(-3px); box-shadow:0 14px 34px rgba(0,0,0,.08)}
+    .card h3{margin:0 0 8px; font-size:1.15rem}
+    .card p{margin:0; color:var(--muted); line-height:1.6}
 
     .counterRow{display:grid; grid-template-columns: repeat(3,1fr); gap:12px}
     .counter{
@@ -114,19 +132,21 @@
       background:#fff;
       text-align:left;
     }
-    .counter .big{font-size:1.6rem; font-weight:900; letter-spacing:.2px}
-    .counter .small{color:var(--muted); font-weight:800; margin-top:6px}
+    .counter .big{font-size:1.7rem; letter-spacing:.2px}
+    .counter .small{color:var(--muted); margin-top:6px}
 
-    .steps{display:grid; grid-template-columns: repeat(5, 1fr); gap:10px}
+    .steps{display:grid; grid-template-columns: repeat(5, 1fr); gap:10px; list-style:none; margin:0; padding:0}
     .step{
       border:1px solid var(--line);
       border-radius:16px;
       padding:12px;
       text-align:center;
-      font-weight:900;
       background:#fff;
+      transition:background .18s ease, color .18s ease;
     }
-    .step span{display:block; color:var(--muted); font-weight:800; margin-top:6px; font-size:.9rem}
+    .step:hover{background:var(--fg); color:var(--bg)}
+    .step span{display:block; color:var(--muted); font-family:"Nunito",system-ui,sans-serif; font-weight:400; margin-top:6px; font-size:.9rem; transition:color .18s ease}
+    .step:hover span{color:#ccc}
 
     /* Trusted by */
     .logoStrip{
@@ -138,14 +158,16 @@
     .logoChip{
       border:1px solid var(--line);
       border-radius:99px;
-      padding:20px 24px;
+      width:260px; max-width:100%; height:110px;
+      padding:16px 28px;
       background:#fff;
       display:inline-flex;
       align-items:center;
-      gap:10px;
-      font-weight:900;
+      justify-content:center;
+      transition:border-color .2s ease;
     }
-    .logoChip img{height:290px; width:auto; display:block}
+    .logoChip:hover{border-color:var(--fg)}
+    .logoChip img{width:180px; max-width:100%; height:auto; display:block}
 
     footer{
       border-top:1px solid var(--line);
@@ -154,35 +176,51 @@
     }
     .foot{
       display:flex; align-items:center; justify-content:space-between;
-      gap:12px; flex-wrap:wrap; padding:18px 0;
+      gap:12px; flex-wrap:wrap; padding:18px;
     }
-    .tiny{color:var(--muted); font-weight:800}
+    .tiny{color:var(--muted)}
+    .company{font-style:normal; font-size:.85rem; line-height:1.7; padding-top:0; overflow-wrap:anywhere}
+
+    /* Motion: the hero plays once on load and sections reveal once on scroll. The script adds .motion only when
+       motion is allowed, so without JS or with reduced motion everything is simply visible. */
+    @keyframes rise{from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none}}
+    .motion .heroCard{animation:rise .55s cubic-bezier(.2,.7,.2,1) both}
+    .motion .reveal{opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1)}
+    .motion .reveal.in{opacity:1; transform:none}
+    @media print{ .motion .reveal{opacity:1; transform:none} }
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{animation:none !important; transition-duration:.01ms !important}
+      .btn:hover,.card:hover,.brand:hover img{transform:none}
+    }
 
     /* Responsive */
     @media (max-width: 920px){
       .heroCard{grid-template-columns:1fr}
-      .grid3{grid-template-columns:1fr}
-      .grid2{grid-template-columns:1fr}
-      .steps{grid-template-columns:1fr}
-      .counterRow{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr 1fr}
+      .steps{grid-template-columns:repeat(3, 1fr)}
+      .counterRow{grid-template-columns:1fr 1fr 1fr}
+    }
+    @media (max-width: 640px){
+      .grid3,.grid2,.steps,.counterRow{grid-template-columns:1fr}
     }
   </style>
 </head>
 
 <body>
+  <a href="#content" class="skip">Skip to content</a>
   <header>
     <div class="container head">
       <a class="brand" href="/" aria-label="appobang Home">
-        <img src="/assets/panda-at-g.png" alt="appobang logo" class="brand-img" />
+        <img src="/assets/panda-at-g.png" alt="appobang logo" class="brand-img" width="836" height="304" />
       </a>
-      <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
+      <nav aria-label="Primary">
         <a class="btn alt" href="/">Home</a>
         <a class="btn" href="mailto:team@appobang.com?subject=Project%20Enquiry%20-%20appobang">Contact</a>
-      </div>
+      </nav>
     </div>
   </header>
 
-  <main class="container">
+  <main class="container" id="content">
     <!-- HERO -->
     <section class="hero">
       <div class="heroCard">
@@ -191,10 +229,10 @@
           <p class="lead">
             We build custom web, mobile, and automation solutions that turn complex operational requirements into reliable digital systems.
           </p>
-          <div class="pillRow" aria-label="Narrative arc">
-            <div class="pill">Identity</div>
-            <div class="pill">Empathy</div>
-            <div class="pill">Authority</div>
+          <div class="pillRow" aria-label="What we build">
+            <div class="pill">Web</div>
+            <div class="pill">Mobile</div>
+            <div class="pill">Automation</div>
           </div>
         </div>
         <a class="btn" href="mailto:team@appobang.com?subject=Discovery%20Call%20-%20Appobang">Book a discovery call</a>
@@ -202,7 +240,7 @@
     </section>
 
     <!-- WHY / TRUST -->
-    <section class="block">
+    <section class="block reveal">
       <div class="sectionTitle">
         <h2>Why Appobang</h2>
         <p>Built to reduce outsourcing risk.</p>
@@ -224,7 +262,7 @@
     </section>
 
     <!-- PROOF / COUNTERS -->
-    <section class="block">
+    <section class="block reveal">
       <div class="sectionTitle">
         <h2>Proof of delivery</h2>
         <p>Outcome-focused credibility signals.</p>
@@ -246,7 +284,7 @@
     </section>
 
     <!-- CAPABILITIES -->
-    <section class="block">
+    <section class="block reveal">
       <div class="sectionTitle">
         <h2>Capabilities</h2>
         <p>Credibility through scope, not buzzwords.</p>
@@ -268,22 +306,22 @@
     </section>
 
     <!-- APPROACH -->
-    <section class="block">
+    <section class="block reveal">
       <div class="sectionTitle">
         <h2>Approach</h2>
         <p>Clarity, discipline, and a clean handover.</p>
       </div>
-      <div class="steps" aria-label="Delivery methodology">
-        <div class="step">Discovery<span>Business logic & constraints</span></div>
-        <div class="step">Architecture<span>System design & data flows</span></div>
-        <div class="step">Build<span>Iterative delivery</span></div>
-        <div class="step">Harden<span>Testing, edge cases, reliability</span></div>
-        <div class="step">Support<span>Optimization & scaling</span></div>
-      </div>
+      <ol class="steps" aria-label="Delivery methodology">
+        <li class="step">Discovery<span>Business logic &amp; constraints</span></li>
+        <li class="step">Architecture<span>System design &amp; data flows</span></li>
+        <li class="step">Build<span>Iterative delivery</span></li>
+        <li class="step">Harden<span>Testing, edge cases, reliability</span></li>
+        <li class="step">Support<span>Optimization &amp; scaling</span></li>
+      </ol>
     </section>
 
     <!-- TRUSTED BY / PORTFOLIO -->
-    <section class="block">
+    <section class="block reveal" id="portfolio">
       <div class="sectionTitle">
         <h2>Portfolio evidence</h2>
         <p>Our own product and client work.</p>
@@ -292,11 +330,11 @@
       <div class="card" style="margin-bottom:14px;">
         <h3 style="margin-bottom:10px;">Selected work</h3>
         <div class="logoStrip">
-          <div class="logoChip" style="width:330px; max-width:100%; height:200px; justify-content:center">
-            <img src="/assets/clients/lemyte.svg" alt="Lemyte" style="height:auto; width:240px; max-width:100%">
+          <div class="logoChip">
+            <img src="/assets/clients/lemyte.svg" alt="Lemyte" width="1346" height="430">
           </div>
-          <div class="logoChip" style="width:330px; max-width:100%; height:200px; justify-content:center">
-            <img src="/assets/clients/camspay.png" alt="CAMSPay" style="height:auto; width:240px; max-width:100%">
+          <div class="logoChip">
+            <img src="/assets/clients/camspay.png" alt="CAMSPay" width="594" height="127">
           </div>
         </div>
       </div>
@@ -318,11 +356,11 @@
     </section>
 
     <!-- CTA -->
-    <section class="block">
+    <section class="block reveal">
       <div class="card" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
         <div>
           <h3 style="margin:0 0 6px;">Let’s scope your system</h3>
-          <p style="margin:0; color:var(--muted); font-weight:800;">
+          <p style="margin:0; color:var(--muted);">
             Share your workflow constraints; we’ll propose a clear, buildable plan.
           </p>
         </div>
@@ -336,7 +374,7 @@
       <div class="tiny">© <span id="y"></span> appobang</div>
       <div class="tiny">This website is in an early stage — more updates coming soon.</div>
     </div>
-    <address class="container tiny" style="font-style:normal; font-weight:700; font-size:.8rem; line-height:1.7; padding:0 0 18px">
+    <address class="container tiny company">
       appobang is run by <a href="https://dxoctagon.com" style="color:inherit"><strong>DXOCTAGON (OPC) PRIVATE LIMITED</strong></a><br />
       (One Person Company)<br />
       C/o KCG Innovation Incubation and Entrepreneurship Centre, KCG College of Technology,
@@ -346,6 +384,18 @@
     </address>
   </footer>
 
-  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+    (function(){
+      if(matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+      document.documentElement.classList.add('motion');
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      },{threshold:0.12});
+      document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+    })();
+  </script>
 </body>
 </html>

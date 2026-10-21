@@ -10,7 +10,11 @@
   <meta property="og:description" content="We design and build iOS, Android and web apps, and automation tools." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://appobang.com/" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://appobang.com/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="appobang panda logo with the line: Ideas to apps." />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#000000" />
   <link rel="icon" href="favicon.png" />
 
@@ -75,6 +79,8 @@
     .hero{text-align:center; padding-block:clamp(48px, 7vw, 96px) clamp(16px, 3vw, 32px)}
     .hero h1{margin:0 0 20px; font-size:clamp(2.5rem, 5.25vw, 4.25rem); line-height:1.08; letter-spacing:0.5px}
     .hero h1 .word{display:inline-block}
+    .mascot{display:block; width:auto; height:88px; margin:0 auto 18px; transition:transform .3s ease}
+    .mascot:hover{transform:rotate(-6deg) translateY(-2px)}
     .hero p{
       margin:0 auto 28px; max-width:640px; color:var(--muted);
       font-size:clamp(1.05rem, 2.2vw, 1.25rem); line-height:1.6;
@@ -130,17 +136,20 @@
     /* Motion: the hero plays once on load and sections reveal once on scroll. The script adds .motion only when
        motion is allowed, so without JS or with reduced motion everything is simply visible. */
     @keyframes rise{from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none}}
-    .motion .hero .word{animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
-    .motion .hero .word:nth-child(2){animation-delay:.08s}
-    .motion .hero .word:nth-child(3){animation-delay:.16s}
-    .motion .hero p{animation:rise .5s .25s cubic-bezier(.2,.7,.2,1) both}
-    .motion .hero .cta{animation:rise .5s .35s cubic-bezier(.2,.7,.2,1) both}
+    @keyframes pop{0%{opacity:0; transform:translateY(18px) scale(.85)} 70%{opacity:1; transform:translateY(-4px) scale(1.03)} 100%{transform:none}}
+    .motion .hero .mascot{animation:pop .6s cubic-bezier(.2,.7,.2,1) both}
+    .motion .hero .word{animation:rise .5s .1s cubic-bezier(.2,.7,.2,1) both}
+    .motion .hero .word:nth-child(2){animation-delay:.18s}
+    .motion .hero .word:nth-child(3){animation-delay:.26s}
+    .motion .hero p{animation:rise .5s .35s cubic-bezier(.2,.7,.2,1) both}
+    .motion .hero .cta{animation:rise .5s .45s cubic-bezier(.2,.7,.2,1) both}
+    .motion .hero .card{animation:rise .5s .55s cubic-bezier(.2,.7,.2,1) both}
     .motion .reveal{opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1)}
     .motion .reveal.in{opacity:1; transform:none}
     @media print{ .motion .reveal{opacity:1; transform:none} }
     @media (prefers-reduced-motion: reduce){
       *,*::before,*::after{animation:none !important; transition-duration:.01ms !important}
-      .btn:hover,.tile:hover,.brand:hover .brand-img,.btn:hover .arrow{transform:none}
+      .btn:hover,.tile:hover,.brand:hover .brand-img,.btn:hover .arrow,.mascot:hover{transform:none}
     }
 
     /* Small screens: stack the grids, let the header wrap, and stop long lines (CIN, email) widening the page */
@@ -151,6 +160,7 @@
     }
     @media (max-width: 600px){
       .brand-img{height:56px}
+      .mascot{height:68px}
       header .container, .foot{flex-wrap:wrap; justify-content:center}
       nav{justify-content:center}
       .grid3,.grid2{grid-template-columns:1fr}
@@ -174,6 +184,7 @@
 
     <main id="content">
       <div class="container hero">
+        <img src="/assets/panda-head.png" alt="" class="mascot" width="238" height="240" />
         <h1><span class="word">Ideas</span> <span class="word">to</span> <span class="word">apps.</span></h1>
         <p>
           We design and build reliable <strong>iOS</strong>, <strong>Android</strong> and <strong>web</strong> applications.
@@ -183,7 +194,7 @@
           <a class="btn" href="mailto:team@appobang.com?subject=Project%20Enquiry%20-%20appobang">Start a project <span class="arrow" aria-hidden="true">→</span></a>
         </div>
 
-        <section class="card reveal" id="work" aria-label="Capabilities">
+        <section class="card" id="work" aria-label="Capabilities">
           <span class="pill">iOS (Swift)</span>
           <span class="pill">Android (Kotlin)</span>
           <span class="pill">Flutter / React Native</span>

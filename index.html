@@ -56,8 +56,8 @@
     header .container, .foot{display:flex; align-items:center; justify-content:space-between; gap:12px}
 
     /* Brand */
-    .brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--fg)}
-    .brand-img{height:100px; width:auto; display:block; transition:transform .25s ease}
+    .brand{display:flex; align-items:center; min-height:44px; gap:12px; text-decoration:none; color:var(--fg)}
+    .brand-img{height:48px; width:auto; display:block; transition:transform .25s ease}
     .brand:hover .brand-img{transform:rotate(-2deg) scale(1.03)}
     nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
 
@@ -133,8 +133,8 @@
     .skip{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden}
     .skip:focus{left:16px; top:16px; width:auto; height:auto; background:#fff; color:#000; padding:8px 10px; border-radius:10px}
 
-    /* Motion: the hero plays once on load and sections reveal once on scroll. The script adds .motion only when
-       motion is allowed, so without JS or with reduced motion everything is simply visible. */
+    /* Motion: the hero plays once on load and sections animate in once when scrolled to. The script adds .motion only when
+       motion is allowed, and nothing is hidden before it animates, so content is always visible. */
     @keyframes rise{from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none}}
     @keyframes pop{0%{opacity:0; transform:translateY(18px) scale(.85)} 70%{opacity:1; transform:translateY(-4px) scale(1.03)} 100%{transform:none}}
     .motion .hero .mascot{animation:pop .6s cubic-bezier(.2,.7,.2,1) both}
@@ -142,11 +142,8 @@
     .motion .hero .word:nth-child(2){animation-delay:.18s}
     .motion .hero .word:nth-child(3){animation-delay:.26s}
     .motion .hero p{animation:rise .5s .35s cubic-bezier(.2,.7,.2,1) both}
-    .motion .hero .cta{animation:rise .5s .45s cubic-bezier(.2,.7,.2,1) both}
     .motion .hero .card{animation:rise .5s .55s cubic-bezier(.2,.7,.2,1) both}
-    .motion .reveal{opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1)}
-    .motion .reveal.in{opacity:1; transform:none}
-    @media print{ .motion .reveal{opacity:1; transform:none} }
+    .motion .reveal.in{animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
     @media (prefers-reduced-motion: reduce){
       *,*::before,*::after{animation:none !important; transition-duration:.01ms !important}
       .btn:hover,.tile:hover,.brand:hover .brand-img,.btn:hover .arrow,.mascot:hover{transform:none}
@@ -159,11 +156,17 @@
       .grid3{grid-template-columns:1fr 1fr}
     }
     @media (max-width: 600px){
-      .brand-img{height:56px}
+      .brand-img{height:40px}
       .mascot{height:68px}
-      header .container, .foot{flex-wrap:wrap; justify-content:center}
+      .foot{flex-wrap:wrap; justify-content:center}
       nav{justify-content:center}
       .grid3,.grid2{grid-template-columns:1fr}
+    }
+    @media (max-width: 360px){
+      nav{gap:6px}
+      nav .btn{padding:10px 12px; font-size:.9rem}
+      header .container{padding-inline:16px}
+      .brand-img{height:34px}
     }
   </style>
 </head>
